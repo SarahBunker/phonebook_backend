@@ -34,6 +34,14 @@ app.get('/api/persons', (request, response) => {
   response.json(persons)
 })
 
+app.get('/info', (request, response) => {
+  let timeReceived = new Date();
+  let formattedDate = `${timeReceived.toDateString()} ${timeReceived.toTimeString()}`
+  let result = `<p>Phonebook has info for ${persons.length} people</p><p>${formattedDate}</p>`
+
+  response.send(result)
+})
+
 // app.get('/api/notes/:id', (request, response) => {
 //   const id = Number(request.params.id)
 //   const note = notes.find(note => note.id === id)
